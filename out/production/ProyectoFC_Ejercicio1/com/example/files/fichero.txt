@@ -1,7 +1,0 @@
-antony@demo.com, antony rebolledo matus, antony
-juan@demo.com, juan rebolledo matus, juan12
-pedro@demo.com, pedro rebolledo matus, pedro13
-roman@demo.com, roman rebolledo matus, roman14
-antony@demo.com, antony rebolledo matus, antony15
-perez@demo.com, perez rebolledo matus, perez17
-arturo@demo.com, arturo rebolledo matus, arturo16

@@ -1,20 +1,30 @@
 package com.example.Ejercicio2;
 
+import de.mkammerer.argon2.Argon2;
+import de.mkammerer.argon2.Argon2Factory;
+
 import java.math.BigInteger;
 import java.security.MessageDigest;
+import java.time.Instant;
 import java.util.ArrayList;
 
 public class Ejercicio2 {
 
    static String emailUnico = "antonyrebolledo@gmail.com";
    static String password = "12345";
-   static String passwordencrypt = md5(password);
+   static String passwordencrypt = Argon2(password);
    static ArrayList<String> Users = new ArrayList<>();
     public static void main(String[] args) {
 
         register("antonymatus@gmail.com","2355");
 
-        login("rebolledo@gmail.com","12345");
+        for ( int i = 0; i < Users.size(); i++){
+
+            System.out.println(Users.get(i));
+        }
+       // login("rebolledo@gmail.com","12345");
+
+
     }
 
 
@@ -30,7 +40,7 @@ public class Ejercicio2 {
                 break;
             } else{
                 Users.add(email);
-                Users.add(md5(password));
+                Users.add(Argon2(password));
                respuesta = true;
                break;
             }
@@ -43,7 +53,7 @@ public class Ejercicio2 {
     public static int login(String email, String password){
        int respuesta = 0;
        int respuesta2 = 0;
-       String encryptpass = md5(password);
+       String encryptpass = Argon2(password);
        for (int i = 0; i < Users.size(); i++){
            if (email == Users.get(i) ){
 
@@ -66,8 +76,10 @@ public class Ejercicio2 {
     }
 
 
-    public static String md5(String txt){
+    /*public static String md5(String txt){
         MessageDigest md;
+
+
         try {
             md = MessageDigest.getInstance("MD5");
             md.update(txt.getBytes());
@@ -79,7 +91,24 @@ public class Ejercicio2 {
             e.printStackTrace();
         }
         return txt;
-}
+}*/
+
+
+    //Ejercicio 3 FC
+
+    public static String Argon2(String txt){
+
+        String contraseña = txt;
+        Instant beginHash = Instant.now();
+
+        Argon2 argon2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2i);
+        //System.out.println(String.format("Creating hash for password '%s'.", contraseña));
+
+        String hash = argon2.hash(4, 1024 * 1024, 8, contraseña);
+       // System.out.println(String.format("Encoded hash is '%s'.", hash));
+
+        return hash;
+    }
 
 
 }
