@@ -1,0 +1,47 @@
+package com.example.Ejercicio1;
+
+public class datosUser {
+
+    private String email;
+    private String name;
+    private String username;
+
+    public datosUser(String email, String name, String username) {
+        this.email = email;
+        this.name = name;
+        this.username = username;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    @Override
+    public String toString() {
+        return "datosUser{" +
+                "email='" + email + '\'' +
+                ", name='" + name + '\'' +
+                ", username='" + username + '\'' +
+                '}';
+    }
+}
